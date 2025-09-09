@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace DAL.Context.Configurations;
 
-internal class CompanyDBContext : DbContext
+public class CompanyDBContext : DbContext
 {
     public DbSet<Department> Department { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -1,3 +1,7 @@
+using BLL.Services;
+using DAL.Context.Configurations;
+using DAL.Reporsitories;
+
 namespace MVC03;
 public class Program
 {
@@ -7,6 +11,10 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+
+        builder.Services.AddScoped<IDepartmentService, IDepartmentService>();
+        //builder.Services.AddScoped<IdepartmentRepository, deparmentRepository>();
+        builder.Services.AddScoped<CompanyDBContext>();
 
         var app = builder.Build();
 
