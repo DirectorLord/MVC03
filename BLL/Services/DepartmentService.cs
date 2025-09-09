@@ -9,4 +9,9 @@ public class IDepartmentService
     {
         _departmentRepository = deparmentRepository;
     }
+
+    public void GetAll()
+    {
+        throw new NotImplementedException();
+    }
 }

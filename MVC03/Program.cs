@@ -1,6 +1,7 @@
 using BLL.Services;
 using DAL.Context.Configurations;
 using DAL.Reporsitories;
+using Microsoft.EntityFrameworkCore;
 
 namespace MVC03;
 public class Program
@@ -14,7 +15,17 @@ public class Program
 
         builder.Services.AddScoped<IDepartmentService, IDepartmentService>();
         //builder.Services.AddScoped<IdepartmentRepository, deparmentRepository>();
-        builder.Services.AddScoped<CompanyDBContext>();
+        //builder.Services.AddScoped<CompanyDBContext>(provider =>
+        //{
+        //    var builder = new DbContextOptionsBuilder<CompanyDBContext>();
+        //    builder.UseSqlServer("");
+        //    return new CompanyDBContext(builder.Options);
+        //});
+        builder.Services.AddDbContext<CompanyDBContext>(options =>
+        {
+            var _ = builder.Configuration["ConnectionsString:DefaultConnection"];
+            options.UseSqlServer();
+        });
 
         var app = builder.Build();
 

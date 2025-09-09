@@ -4,18 +4,12 @@ using System.Reflection;
 
 namespace DAL.Context.Configurations;
 
-public class CompanyDBContext : DbContext
+public class CompanyDBContext(DbContextOptions<CompanyDBContext> options) : DbContext(options)
 {
     public DbSet<Department> Department { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        //modelBuilder.ApplyConfigurationsFromAssembly(typeof(CompanyDBContext.Assembly));
     }
-    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //{
-    //    base.OnConfiguring(optionsBuilder);
-    //}
-
 }
 
