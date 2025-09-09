@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DAL.Entities;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
-namespace DAL.Context.Configurations
+namespace DAL.Context.Configurations;
+
+internal class CompanyDBContext : DbContext
 {
-    internal class CompanyDBContext
+    public DbSet<Department> Department { get; set; }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        //modelBuilder.ApplyConfigurationsFromAssembly(typeof(CompanyDBContext.Assembly));
     }
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //{
+    //    base.OnConfiguring(optionsBuilder);
+    //}
+
 }
+
