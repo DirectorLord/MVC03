@@ -15,6 +15,9 @@ namespace MVC03.Controllers
 
         public IActionResult Index()
         {
+            //DB call (domain models, data access logic, ...etc)
+            //BL
+            //UI
             return View();
         }
 
