@@ -2,16 +2,13 @@
 
 namespace BLL.Services;
 
-public class IDepartmentService
+public class DepartmentService : IDepartmentService
 {
     private IdepartmentRepository _departmentRepository;
-    public IDepartmentService(IdepartmentRepository deparmentRepository)
-    {
-        _departmentRepository = deparmentRepository;
-    }
+    public IDepartmentService departmentService;
 
-    public void GetAll()
+    public DepartmentService(IdepartmentRepository idepartmentRepository)
     {
-        throw new NotImplementedException();
+        _departmentRepository = idepartmentRepository;
     }
 }
